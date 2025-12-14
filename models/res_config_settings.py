@@ -11,4 +11,5 @@ class ResConfigSettingsExtension(models.TransientModel):
             'Pack products as soon as available, ship all products at once'
         )],
         ondelete={'pack_direct_ship_one': 'set default'},
+        default="direct"
     )
