@@ -8,6 +8,11 @@ class StockPicking(models.Model):
 
     @api.model
     def create(self, vals):
+        # Ensure move_type is set to a valid value ('direct' or 'one')
+        # Remove any invalid value that might have been set from sale.order.picking_policy
+        if vals.get('move_type') not in ['direct', 'one']:
+            vals['move_type'] = 'direct'
+
         picking = super(StockPicking, self).create(vals)
 
         # If the picking comes from a sale with our custom policy, decide move_type now.
