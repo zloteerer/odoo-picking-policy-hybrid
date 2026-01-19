@@ -9,7 +9,7 @@ def uninstall_hook(cr, registry):
     _logger.info("Running uninstall_hook for picking_policy_hybrid module")
     cr.execute("""
         UPDATE ir_default
-        SET json_value = '"direct"'
+        SET json_value = '"one"'
         WHERE field_id IN (
             SELECT id FROM ir_model_fields
             WHERE name = 'picking_policy'
